@@ -34,6 +34,10 @@ def _configure_extensions_with_system_libs() -> list[Extension]:
     libraries = []
     library_dirs = []
 
+    # There is no way (or, at least, no reliable one) to check wether `harfbuzz` has been built with experimental API support.
+    # 
+    define_macros.append(("HB_EXPERIMENTAL_API", "1"))
+    
     harfbuzz_components = ["harfbuzz", "harfbuzz-subset", "harfbuzz-gobject"]
     for harfbuzz_component in harfbuzz_components:
         harfbuzz_component_configuration = pkgconfig.parse(harfbuzz_component)
