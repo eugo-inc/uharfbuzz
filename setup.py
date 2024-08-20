@@ -38,7 +38,7 @@ def _configure_extensions_with_system_libs() -> list[Extension]:
     # 
     define_macros.append(("HB_EXPERIMENTAL_API", "1"))
     
-    harfbuzz_components = ["harfbuzz", "harfbuzz-subset", "harfbuzz-gobject"]
+    harfbuzz_components = ["harfbuzz-subset"]
     for harfbuzz_component in harfbuzz_components:
         harfbuzz_component_configuration = pkgconfig.parse(harfbuzz_component)
         include_dirs += harfbuzz_component_configuration["include_dirs"]
